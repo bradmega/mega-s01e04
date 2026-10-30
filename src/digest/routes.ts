@@ -6,7 +6,7 @@ const NIGHT_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 export function digestApiHandler(runsDir: string): Handler {
   return (c) => {
     const night = c.req.param('night');
-    if (night.length !== 10 || !NIGHT_PATTERN.test(night)) {
+    if (!night || !NIGHT_PATTERN.test(night)) {
       return c.json({ error: 'Night not found' }, 404);
     }
 
